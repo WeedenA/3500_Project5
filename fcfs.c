@@ -28,7 +28,7 @@ void fcfsRun (task_t tasks[], int size) {
     }
     if (readyQ[q] == 1) {
       tasks[q].startTime = clock;
-      readyQ[q] = 2;
+      tasks[q].origBurst = tasks[q].burstTime;
     }
     if (readyQ[q] == 2) {
       printf("<time %u> process %u is running\n", clock, tasks[q].pid);
@@ -43,6 +43,7 @@ void fcfsRun (task_t tasks[], int size) {
     }
 
   }
+  tasks[0].exitTime = clock;
   printf("<time %u> All processes have finished\n", clock);
 
 

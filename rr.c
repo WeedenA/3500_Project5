@@ -8,7 +8,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
 /* file includes */
 #include "scheduler.h"
@@ -37,6 +36,7 @@ void rrRun (task_t tasks[], int size, int timeQuantum) {
     if (readyQ[turnQ[0]] == 1) {
       readyQ[turnQ[0]] = 2;
       tasks[turnQ[0]].startTime = clock;
+      tasks[turnQ[0]].origBurst = tasks[turnQ[0]].burstTime;
     }
     if (readyQ[turnQ[0]] == 2) {
       printf("<time %u> process %u is running\n", clock, tasks[turnQ[0]].pid);
@@ -79,4 +79,7 @@ void rrRun (task_t tasks[], int size, int timeQuantum) {
 
 
   }
+  tasks[0].exitTime = clock;
+  printf("<time %u> All processes have finished\n", clock);
+
 }

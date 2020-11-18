@@ -42,6 +42,8 @@ void srtfRun (task_t tasks[], int size) {
     if (readyQ[turn] == 1) {
       readyQ[turn] = 2;
       tasks[turn].startTime = clock;
+      tasks[turn].origBurst = tasks[turn].burstTime;
+
     }
     if (readyQ[turn] == 1 | readyQ[turn] == 2) {
       printf("<time %u> process %u is running\n", clock, tasks[turn].pid);
@@ -55,6 +57,7 @@ void srtfRun (task_t tasks[], int size) {
       readyQ[turn] = 3;
     }
   }
+  tasks[0].exitTime = clock;
   printf("<time %u> All processes have finished\n", clock);
 
 }

@@ -22,6 +22,7 @@
 
 int main( int argc, char *argv[] ) {
   task_t startArray[MAX_TASK_ARRAY];
+  stat_t statsArray[1];
   FILE *fd;
   char *fileName;
   char *policyChoice;
@@ -47,6 +48,7 @@ int main( int argc, char *argv[] ) {
   openFile(argc, argv, &count, startArray);
 
   if (strcmp(policyChoice,"FCFS") == 0) {
+    printf("here");
     fcfsRun(startArray, count);
   }
   if (strcmp(policyChoice, "SRTF") == 0) {
@@ -60,6 +62,9 @@ int main( int argc, char *argv[] ) {
     quantum = atoi(argv[3]);
     rrRun(startArray, count, quantum);
   }
+
+  analyzeTime(startArray, count, statsArray);
+  printStats(statsArray);
 
 
   printf("p: %u\n", startArray[3].arrivalTime);

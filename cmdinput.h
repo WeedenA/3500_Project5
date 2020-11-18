@@ -15,6 +15,8 @@ typedef struct task {
   uInt tatTime;
   uInt waitTime;
   uInt quantumTime;
+  uInt origBurst;
+  uInt exitTime;
 }task_t;
 
 void openFile (int argc, char *argv[], int *size, task_t taskArray[]);
