@@ -1,0 +1,1 @@
+Incorrect arguments given. Input <fileName> [FCFS|RR|SRTF] [time_quantum].

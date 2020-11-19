@@ -2,6 +2,7 @@
  *  Alex Weeden
  *  COMP 3500 Project 5
  *  analysis.c
+ *  No outside references used for this implementation.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -11,6 +12,10 @@
 #include "scheduler.h"
 #include "cmdinput.h"
 
+/*
+ *  Uses a finished array to determine individual and average statistical times
+ *  Passes average times to statistics array, to be printed by printstat.c
+ */
 void analyzeTime (task_t finArray[], int size, stat_t stats[]) {
   int i = 0;
   while (i < size) {

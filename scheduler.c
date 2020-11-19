@@ -3,12 +3,10 @@
  *  COMP 3500 Project 5
  *  scheduler.c
  *  Main program file
+ *  Multiple error message implementations pulled from Dr. Qin's sample code provided on Canvas
+ *  No other outside references used.
  *
- *  Use "make" to compile using Makefile
- *
- *  Manual compilation:
- *  Use "gcc -c <fileName>" to compile cmdinput.c, fcfs.c, rr.c, srtf.c, analysis.c, printstat.c
- *  "gcc cmdinput.o, fcfs.o, rr.o, srtf.o, analysis.o, printstat.o scheduler.c -o scheduler"
+ *  Compilation instructions commented in scheduler.h
  *
  *  Run instructions:
  *  If too few arguments are provided, input requirement is printed
@@ -25,9 +23,10 @@
  *  ./scheduler task.list RRR 10
  *  <task attribute data displayed>
  *  Invalid Policy Coice. Input [FCFS|SRTF|RR [int quantum]]
- *  (While it may be prudent to send this error before loading the file,
- *      this process clearly shows the user that their data and file are valid,
-*       and displays their policy choice, though invalid, in output before closing)
+ *
+ *    (While it may be prudent to send this error before loading the file,
+ *        this process clearly shows the user that their data and file are valid,
+ *        and displays their policy choice, though invalid, in output before closing)
  *
  *  If Round Robin is chosen for a valid file, but no time quantum is given,
  *  an error "No time quantum given" is printed after loading the file.
@@ -43,7 +42,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
 /* file includes */
 #include "scheduler.h"
 #include "cmdinput.h"
@@ -52,8 +50,6 @@
 #include "srtf.h"
 #include "rr.h"
 #include "printstat.h"
-
-
 /*
  *  Uses command line to pass user input to cmdinput.c, which populates the task struct
  *  After error-checking input, a policy choice is made to simulate a CPU scheduler of that type
@@ -89,11 +85,13 @@ int main( int argc, char *argv[] ) {
     return EXIT_FAILURE;
   }
 
+  /* directs task struct to simulated policy, finishes population */
   if (strcmp(policyChoice,"FCFS") == 0) {
     fcfsRun(startArray, count);
   } else if (strcmp(policyChoice, "SRTF") == 0) {
     srtfRun(startArray, count);
   } else if (strcmp(policyChoice, "RR")== 0) {
+    /* Validates time quantum is given */
     if (argc != 4) {
       printf("No time quantum given\n");
       return EXIT_FAILURE;
@@ -101,11 +99,15 @@ int main( int argc, char *argv[] ) {
     quantum = atoi(argv[3]);
     rrRun(startArray, count, quantum);
   } else {
+    /* Validates policy choice */
     printf("Invalid Policy Coice. Input [FCFS|SRTF|RR [int quantum]]\n");
     return EXIT_FAILURE;
   }
 
+  /* uses finished task times to populate statistic array */
   analyzeTime(startArray, count, statsArray);
+
+  /* Displays statistics for User */
   printStats(statsArray);
 
   fclose(fd);

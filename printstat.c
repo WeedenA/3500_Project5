@@ -2,6 +2,7 @@
  *  Alex Weeden
  *  COMP 3500 Project 5
  *  printstat.c
+ *  No outside references used.
  */
 #include <stdio.h>
 #include <stdlib.h>
@@ -10,7 +11,9 @@
 /* file includes */
 #include "scheduler.h"
 #include "cmdinput.h"
-
+/*
+ *  Prints statistical info to output for User
+ */
 void printStats (stat_t stats[]) {
   printf("====================================================\n");
   printf("Average waiting time:    %.2f\n", stats[0].avgWait);

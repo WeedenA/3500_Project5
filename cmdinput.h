@@ -2,6 +2,8 @@
  *  Alex Weeden
  *  COMP 3500 Project 5
  *  cmdinput.h
+ *  Dr. Qin's provided starter code "scheduler.h" used as reference
+ *  no other outside references used.
  */
 #ifndef _CMDINPUT_H_
 #define _CMDINPUT_H_

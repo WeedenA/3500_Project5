@@ -2,6 +2,8 @@
  *  Alex Weeden
  *  COMP 3500 Project 5
  *  srtf.h
+ *  Dr. Qin's provided starter code "scheduler.h" used as reference
+ *  no other outside references used.
  */
 
 #ifndef _SRTF_H_

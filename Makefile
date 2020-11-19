@@ -1,3 +1,8 @@
+# Alex Weeden
+# COMP 3500 Project 5
+# Makefile
+# Youtube tutorials, starter Makefile provided by Dr. Qin referenced and used
+# Compilation instructions commented in scheduler.h
 CC = gcc
 CFLAGS = -g
 OBJ = cmdinput.o fcfs.o srtf.o rr.o analysis.o printstat.o
