@@ -35,11 +35,13 @@ void srtfRun (task_t tasks[], int size) {
   while (done != 1) {
     /* Evaluate task readiness */
     ADD:
-    if (!(tasks[i].arrivalTime > clock)) {
-      readyQ[i] = 1;
-      finishQ[i] = 0;
-      i++;
-      goto ADD;
+    if (i < size) {
+      if (!(tasks[i].arrivalTime > clock)) {
+        readyQ[i] = 1;
+        finishQ[i] = 0;
+        i++;
+        goto ADD;
+      }
     }
     min = 999;
     turn = 0;
