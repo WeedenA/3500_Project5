@@ -42,13 +42,15 @@ void rrRun (task_t tasks[], int size, int timeQuantum) {
   while (done != 1) {
     /* Evaluate task readiness */
     ADD:
-    if (!(tasks[i].arrivalTime > clock)) {
-      tasks[i].quantumTime = timeQuantum;
-      readyQ[i] = 1;
-      turnQ[nextFree] = i;
-      nextFree++;
-      i++;
-      goto ADD;
+    if (i < size) {
+      if (!(tasks[i].arrivalTime > clock)) {
+        tasks[i].quantumTime = timeQuantum;
+        readyQ[i] = 1;
+        turnQ[nextFree] = i;
+        nextFree++;
+        i++;
+        goto ADD;
+      }
     }
     /* first time task gets resource */
     if (readyQ[turnQ[0]] == 1) {
