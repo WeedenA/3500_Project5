@@ -1,10 +1,8 @@
 /*
-  Alex Weeden
-  Project 5
-  rr.c
-
-*/
-
+ *  Alex Weeden
+ *  COMP 3500 Project 5
+ *  rr.c
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -26,12 +24,14 @@ void rrRun (task_t tasks[], int size, int timeQuantum) {
   int done = 0;
   DONE:
   while (done != 1) {
+    ADD:
     if (!(tasks[i].arrivalTime > clock)) {
       tasks[i].quantumTime = timeQuantum;
       readyQ[i] = 1;
       turnQ[nextFree] = i;
       nextFree++;
       i++;
+      goto ADD;
     }
     if (readyQ[turnQ[0]] == 1) {
       readyQ[turnQ[0]] = 2;
@@ -43,7 +43,7 @@ void rrRun (task_t tasks[], int size, int timeQuantum) {
       tasks[turnQ[0]].burstTime--;
       tasks[turnQ[0]].quantumTime--;
       clock++;
-    }
+    } else {clock++;}
     int j;
     if (tasks[turnQ[0]].burstTime == 0) {
       finishQ[turnQ[0]] = 1;

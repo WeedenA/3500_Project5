@@ -1,3 +1,8 @@
+/*
+ *  Alex Weeden
+ *  COMP 3500 Project 5
+ *  cmdinput.h
+ */
 #ifndef _CMDINPUT_H_
 #define _CMDINPUT_H_
 
@@ -5,6 +10,10 @@
 
 typedef unsigned int uInt;
 
+/*
+ *  Task struct initially populated in cmdinput.c
+ *  After simulation, analysis.c analyzes wait/tat/response time
+ */
 typedef struct task {
   uInt pid;
   uInt arrivalTime;
@@ -19,7 +28,10 @@ typedef struct task {
   uInt exitTime;
 }task_t;
 
-void openFile (int argc, char *argv[], int *size, task_t taskArray[]);
+/*
+  prototype of function in cmdinput.c
+*/
+int openFile (FILE **fileDes, char *name, char *argv[], int *size, task_t taskArray[]);
 
 
 #endif

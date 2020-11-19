@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -g
-OBJ = cmdinput.o rr.o fcfs.o srtf.o printstat.o analysis.o
+OBJ = cmdinput.o fcfs.o srtf.o rr.o analysis.o printstat.o
 
 scheduler: $(OBJ) scheduler.c
 	@echo "Creating scheduler:"
