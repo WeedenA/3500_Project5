@@ -30,9 +30,11 @@ void fcfsRun (task_t tasks[], int size) {
 
   while (done != 1) {
     /* Evaluate task readiness */
-    if (!(tasks[i].arrivalTime > clock)) {
-      readyQ[i] = 1;
-      i++;
+    if (i < size) {
+      if (!(tasks[i].arrivalTime > clock)) {
+        readyQ[i] = 1;
+        i++;
+      }
     }
     /* first time task gets resources */
     if (readyQ[q] == 1) {
